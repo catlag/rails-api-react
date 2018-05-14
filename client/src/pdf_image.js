@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom'
 import createReactClass from'create-react-class'
 import './stylesheets/image.css';
 import React, { Component } from 'react';
-import { Document, Page } from 'react-pdf';
+// import { Document, Page } from 'react-pdf';
 
 
 class PdfImage extends Component {
@@ -25,13 +25,9 @@ class PdfImage extends Component {
 
     return (
       <div className={this.props.className} onClick={this.handleClick}>
-        <Document
-          file={this.props.pdfFile}
-          onLoadSuccess={this.onDocumentLoad}
-        >
-          <Page pageNumber={pageNumber} width={this.props.width}/>
-        </Document>
-        <p>{pageNumber} of {numPages}</p>
+        <object data={this.props..pdfFile} type="application/pdf" >
+          <embed src={this.props.pdfFile}  type="application/pdf" />
+        </object>
       </div>
       
     );

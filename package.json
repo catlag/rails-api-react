@@ -1,5 +1,4 @@
 {
-  
   "name": "client",
   "engines": {
     "node": "8.1.2"
@@ -8,5 +7,6 @@
     "build": "cd client && sudo npm install && npm run build && cd ..",
     "deploy": "cp -a client/build/. public/",
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
-  }
+  },
+  "dependencies": {}
 }
