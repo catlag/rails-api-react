@@ -61,79 +61,6 @@ ActiveRecord::Schema.define(version: 20180513233805) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_item_type"
-    t.string   "image_item_id"
-    t.index ["image_item_id", "image_item_type"], name: "index_images_on_image_item_id_and_image_item_type", using: :btree
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
-  end
-
-  create_table "pages", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "admin_user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["admin_user_id"], name: "index_posts_on_admin_user_id", using: :btree
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.string   "sku"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "image_id"
-    t.float    "price"
-    t.text     "summary"
-    t.index ["image_id"], name: "index_products_on_image_id", using: :btree
-    t.index ["name"], name: "index_products_on_name", unique: true, using: :btree
-    t.index ["sku"], name: "index_products_on_sku", unique: true, using: :btree
-  end
-
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.string   "taggable_type"
-    t.integer  "taggable_id"
-    t.string   "tagger_type"
-    t.integer  "tagger_id"
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
-    t.index ["context"], name: "index_taggings_on_context", using: :btree
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                             default: "", null: false
@@ -154,7 +81,4 @@ ActiveRecord::Schema.define(version: 20180513233805) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "orders", "users"
-  add_foreign_key "posts", "admin_users"
-  add_foreign_key "products", "images"
 end
