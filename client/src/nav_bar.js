@@ -7,9 +7,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import React, { Component } from 'react';
 
-import Callback from './callback';
-import Auth from './login';
-import history from './history';
 import Client from './Client';
 
 
