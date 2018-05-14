@@ -18,4 +18,4 @@ UserType = GraphQL::ObjectType.define do
       obj.created_at.to_i
     }
   end
-en
+end
