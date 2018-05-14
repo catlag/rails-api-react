@@ -15,7 +15,6 @@ import GameDesign from './game_design';
 import GraphicDesign from './graphic_design';
 import ProjectList from './project_list';
 import Nav from './nav_bar';
-import Callback from './callback';
 import BaseComponent from './BaseComponent';
 import LoginForm from './login_form';
 import Auth from './actions/Auth';
