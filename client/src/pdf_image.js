@@ -25,7 +25,7 @@ class PdfImage extends Component {
 
     return (
       <div className={this.props.className} onClick={this.handleClick}>
-        <object data={this.props..pdfFile} type="application/pdf" >
+        <object data={this.props.pdfFile} type="application/pdf" >
           <embed src={this.props.pdfFile}  type="application/pdf" />
         </object>
       </div>
