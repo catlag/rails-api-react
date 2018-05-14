@@ -1,13 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import 'semantic-ui-css/semantic.css'
-import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom'
+import createReactClass from'create-react-class'
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>, document.getElementById('root'));
+
+import './stylesheets/index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom'
+
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
+
+
+    const TitleComponent = createReactClass({
+    render: function() {
+      return 
+    }
+  });
+
+  // ReactDOM.render(<TitleComponent />, document.getElementById('title'));
+
+

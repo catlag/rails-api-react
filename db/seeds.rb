@@ -9,30 +9,8 @@ require 'faker'
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.development?
   AdminUser.first_or_create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+  Component.create(name: 'single', order: 1, urls:['https://i.imgur.com/17BFu.jpg'], category: 'illustration' )
+  Component.create(name: 'single', order: 2, urls:['https://i.imgur.com/yy7iq.jpg'], category: 'illustration' )
 
-  100.times do |i|
-    AdminUser.first_or_create!(
-      email: Faker::Name.unique.name.underscore + '@example.com',
-      password: 'password',
-      password_confirmation: 'password'
-    )
-  end
 
-  5.times do |i|
-    Product.create!(
-      name: Faker::Name.unique.name,
-      description: Faker::Lorem.paragraph,
-      summary: Faker::Lorem.sentence,
-      sku: "#{ Faker::Lorem.word }-#{ i }",
-      price: rand(100)
-    )
-  end
-
-  100.times do |i|
-    Post.create!(
-      title: Faker::Name.unique.name,
-      content: Faker::Lorem.paragraph,
-      admin_user_id: AdminUser.all[rand(AdminUser.all.count)]
-    )
-  end
 end

@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :products, ActiveAdmin::Devise.config
   devise_for :users
-  resources :pages
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope '/api' do
-    resources :products
-    resources :posts, only: [:index, :show]
+    get 'all_from_category', to: 'components#all_from_category'
+    get 'update_category', to: 'components#update_category'
     resources :users, only: [:create, :update]
     resources :sessions, only: [:create]
 
-    post "graphql" => "graphqls#create"
 
     scope '/auth' do
       get 'is_signed_in', to: 'auth#is_signed_in?'
