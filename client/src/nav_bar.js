@@ -7,7 +7,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import React, { Component } from 'react';
 
-import Client from './Client';
 
 
 import {
@@ -25,13 +24,6 @@ const ListItemLink = ({to, children}) => (
   )} />
 );
 
-const auth = new Auth();
-
-const handleAuthentication = (nextState, replace) => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication();
-  }
-}
 
 
   class NavComponent extends Component {
@@ -75,7 +67,6 @@ const handleAuthentication = (nextState, replace) => {
     }
 
     render() {
-      const { isAuthenticated } = auth;
       var mobile = this.state.mobile === true ? 'mobile' : ''
       var navLink = this.state.navLinks === true ? 'show' : 'hidden'
       return (
